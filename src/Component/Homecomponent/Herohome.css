@@ -1,0 +1,4 @@
+.rcs-hero {
+  min-height: calc(100vh - var(--site-header-height, 97px));
+  min-height: calc(100svh - var(--site-header-height, 97px));
+}

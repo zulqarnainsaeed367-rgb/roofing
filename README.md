@@ -17,7 +17,7 @@ src/
     Navbar.jsx           Shared navigation
     Footer.jsx           Shared footer
   data/
-    navigation.js        Navbar and footer links
+    navigation.js        Desktop and mobile navbar links
   layouts/
     MainLayout.jsx       Navbar + page outlet + Footer
   Pages/                 Individual page content
@@ -32,14 +32,14 @@ src/
 | `/` | `Home.jsx` |
 | `/about-us` | `Aboutus.jsx` |
 | `/residential` | `Residential.jsx` |
-| `/project-gallery` | `ProjectGallery.jsx` |
-| `/testimonials` | `Testimonail.jsx` |
-| `/customer-resources` | `CoustomerResources.jsx` |
-| `/location` | `location.jsx` |
+| `/commercial` | `Commercial.jsx` |
+| `/capability-statement` | `CapabilityStatement.jsx` |
+| `/free-inspection` | `FreeInspection.jsx` |
+| `/faq` | `FAQ.jsx` |
 | `/contact-us` | `Contactus.jsx` |
 | Any unknown URL | `NotFound.jsx` |
 
-Existing page filenames are preserved. Replace the starter headings and descriptions with your website content. Update the brand in `common/Navbar.jsx` and `common/Footer.jsx`.
+Replace the starter headings and descriptions with your website content. Update the brand in `common/Navbar.jsx` and `common/Footer.jsx`.
 
 To add a page, create its component in `Pages`, add a child route inside the `MainLayout` route in `App.jsx`, and add its link to `data/navigation.js`. The layout supplies the navbar and footer; page components only contain their own content.
 

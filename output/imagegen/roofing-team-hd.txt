@@ -1,0 +1,6 @@
+Mode: Built-in image_gen image editing.
+Source: User-provided Facebook photograph, downloaded as src/assets/roofing-team.jpg (409 x 322).
+Output: src/assets/roofing-team-hd.png. AI-enhanced image; not the full-resolution original from Facebook.
+
+Final prompt:
+Use case: identity-preserve. Asset type: high-resolution photo for a roofing website's Why Choose Us section. Edit target: the provided 409x322 photograph of a roofer in a black polo and brown trousers kneeling on shingles, holding a tablet, ladder on the left, warm evening light. Primary request: carefully upscale and restore this exact photograph to HD, ideally 2048x1616 or the closest matching original 409:322 aspect ratio. Improve clarity, reduce JPEG compression and mild blur, recover natural-looking shingle, clothing, hair and skin detail. Keep the exact same person, facial identity, expression, pose, hand positions, tablet, visible clothing logo, ladder, roof, background, camera composition, colors and lighting. Preserve complete frame and existing small bottom border as supplied. No new objects, no added text, no redesigned branding, no new scene, no stylization, no dramatic sharpening. This is enhancement of the supplied photo, not creation of a different photo.
