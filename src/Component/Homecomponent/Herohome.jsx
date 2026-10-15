@@ -107,10 +107,10 @@ export default function Hero() {
 
   const arrowClasses =
     "absolute bottom-5 z-20 flex h-11 w-11 items-center justify-center " +
-    "rounded-full border border-white/30 bg-[#100E0B]/40 text-white " +
-    "transition-colors hover:border-[#D9A44C] hover:bg-[#D9A44C] " +
-    "hover:text-[#100E0B] focus-visible:outline focus-visible:outline-2 " +
-    "focus-visible:outline-offset-4 focus-visible:outline-[#D9A44C] " +
+    "rounded-full border border-rcs-cream/40 bg-rcs-charcoal/40 text-rcs-cream " +
+    "transition-colors hover:border-rcs-gold hover:bg-rcs-gold " +
+    "hover:text-rcs-charcoal focus-visible:outline focus-visible:outline-2 " +
+    "focus-visible:outline-offset-4 focus-visible:outline-rcs-gold " +
     "md:bottom-auto md:top-1/2 md:h-12 md:w-12 md:-translate-y-1/2";
 
   return (
@@ -118,7 +118,7 @@ export default function Hero() {
       role="region"
       aria-roledescription="carousel"
       aria-label="RCS roofing services"
-      className="rcs-hero relative isolate flex w-full flex-col overflow-hidden bg-[#100E0B] text-white"
+      className="rcs-hero relative isolate flex w-full flex-col overflow-hidden bg-rcs-charcoal font-sans text-rcs-cream"
       style={{ touchAction: "pan-y" }}
       onTouchStart={(event) => {
         const touch = event.touches[0];
@@ -163,19 +163,19 @@ export default function Hero() {
       {/* Dark overlay keeps the text readable */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[#100E0B]/60"
+        className="absolute inset-0 -z-10 bg-rcs-charcoal/60"
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-[#100E0B]/80 via-transparent to-[#100E0B]/20"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-rcs-charcoal/80 via-transparent to-rcs-charcoal/20"
       />
 
       {/* Slide content */}
       <div className="mx-auto flex w-full max-w-[1280px] flex-1 flex-col items-center justify-center px-6 py-24 text-center sm:px-16 md:px-24">
-        <div className="mb-7 flex items-center gap-3 text-[10px] font-semibold tracking-[0.2em] text-[#D9A44C] sm:text-xs">
-          <span className="h-px w-6 bg-[#D9A44C] sm:w-10" />
+        <div className="mb-7 flex items-center gap-3 text-[10px] font-semibold tracking-[0.2em] text-rcs-gold sm:text-xs">
+          <span className="h-px w-6 bg-rcs-gold sm:w-10" />
           <span>RCS CONSTRUCTION SERVICES</span>
-          <span className="h-px w-6 bg-[#D9A44C] sm:w-10" />
+          <span className="h-px w-6 bg-rcs-gold sm:w-10" />
         </div>
 
         <div
@@ -185,21 +185,21 @@ export default function Hero() {
           aria-live={reducedMotion ? "polite" : "off"}
           aria-atomic="true"
         >
-          <h1 className="font-heading text-[clamp(2.125rem,5.6vw,5.25rem)] font-bold leading-[1.1] tracking-[-0.04em] text-balance">
+          <h1 className="font-heading text-[clamp(2.5rem,5.6vw,4.75rem)] font-bold leading-[1.1] tracking-[-0.04em] text-balance">
             {slide.title}
-            <span className="mt-2 block text-[#D9A44C]">
+            <span className="mt-2 block text-rcs-gold">
               {slide.highlight}
             </span>
           </h1>
 
-          <p className="mx-auto mt-7 max-w-[38rem] text-base leading-[1.8] font-normal text-[#F5ECDD] text-pretty sm:text-lg">
+          <p className="mx-auto mt-7 max-w-[38rem] text-base leading-[1.8] font-normal text-rcs-cream text-pretty sm:text-lg">
             {slide.description}
           </p>
         </div>
 
         <Link
           to={slide.link}
-          className="group mt-9 inline-flex min-h-12 items-center justify-center gap-3 rounded-[3px] border border-[#D9A44C] bg-[#D9A44C] px-6 py-4 text-sm font-semibold text-[#100E0B] transition-colors hover:border-[#E8BB71] hover:bg-[#E8BB71] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D9A44C] sm:px-8"
+          className="group mt-9 inline-flex min-h-12 items-center justify-center gap-3 rounded-[3px] border border-rcs-gold bg-rcs-gold px-6 py-4 text-sm font-semibold text-rcs-charcoal transition-colors hover:border-rcs-gold-hover hover:bg-rcs-gold-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold sm:px-8"
         >
           {slide.button}
           <svg
@@ -247,13 +247,13 @@ export default function Hero() {
             aria-label={`Show slide ${index + 1}`}
             aria-current={active === index ? "true" : undefined}
             onClick={() => setActive(index)}
-            className="flex h-11 w-8 items-center justify-center rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D9A44C]"
+            className="flex h-11 w-8 items-center justify-center rounded focus-visible:outline focus-visible:outline-2 focus-visible:outline-rcs-gold"
           >
             <span
               className={`block h-2 rounded-full transition-all duration-300 motion-reduce:transition-none ${
                 active === index
-                  ? "w-7 bg-[#D9A44C]"
-                  : "w-2 bg-white/50"
+                  ? "w-7 bg-rcs-gold"
+                  : "w-2 bg-rcs-cream/50"
               }`}
             />
           </button>

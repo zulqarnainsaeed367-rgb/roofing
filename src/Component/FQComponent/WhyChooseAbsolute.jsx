@@ -1,6 +1,7 @@
 
-import React from "react";
+import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
+import roofingTeam from "../../assets/roofing-team-hd.png";
 
 const WhyChooseAbsolute = () => {
   const benefits = [
@@ -27,42 +28,39 @@ const WhyChooseAbsolute = () => {
   ];
 
   return (
-    <section className="w-full overflow-hidden bg-white py-16 md:py-20 lg:py-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-5 sm:px-8 lg:grid-cols-2 lg:gap-14 lg:px-10">
-        
-        {/* LEFT SIDE - IMAGE */}
+    <section className="w-full overflow-hidden bg-white py-16 font-sans text-rcs-charcoal md:py-20 lg:py-24">
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-10 px-6 sm:px-10 lg:grid-cols-2 lg:gap-14 lg:px-16">
         <div className="group relative">
-          <div className="relative h-[340px] overflow-hidden rounded-md sm:h-[440px] lg:h-[500px]">
+          <div className="relative h-[340px] overflow-hidden rounded-xl sm:h-[440px] lg:h-[500px]">
             <img
-              src="/images/why-choose-roofing.jpg"
-              alt="Beautiful architectural roofing installation by Absolute Construction"
+              src={roofingTeam}
+              alt="RCS Construction Services roofing team"
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
             />
           </div>
-
-          {/* Decorative corner */}
-          <div className="absolute -bottom-3 -right-3 -z-10 h-28 w-28 rounded-br-md border-b-4 border-r-4 border-[#F26522]" />
+          <div aria-hidden="true" className="absolute -bottom-3 -right-3 -z-10 h-28 w-28 rounded-br-xl border-b-4 border-r-4 border-rcs-gold" />
         </div>
 
-        {/* RIGHT SIDE - CONTENT */}
         <div className="lg:pl-1">
-          <h2 className="max-w-xl text-3xl font-extrabold leading-[1.18] tracking-tight text-[#142033] sm:text-4xl lg:text-[38px]">
-            Why Choose Absolute Construction for Your Roofing Needs?
+          <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-rcs-gold-ink sm:text-xs">
+            WHY CHOOSE RCS
+          </p>
+          <h2 className="max-w-xl font-heading text-3xl font-bold leading-[1.18] tracking-[-0.03em] text-balance sm:text-4xl lg:text-[38px]">
+            Why Choose RCS Construction Services for Your Roofing Needs?
           </h2>
 
-          <h3 className="mt-5 text-lg font-bold text-[#F26522] sm:text-xl">
-            Trusted Experts with Decades of Experience
+          <h3 className="mt-5 font-heading text-lg font-semibold text-rcs-gold-ink sm:text-xl">
+            Roofing expertise built on quality and trust
           </h3>
 
-          {/* BENEFITS */}
           <div className="mt-5 space-y-3">
-            {benefits.map((benefit, index) => (
+            {benefits.map((benefit) => (
               <p
-                key={index}
-                className="text-[15px] leading-relaxed text-[#526071]"
+                key={benefit.title}
+                className="text-[15px] leading-relaxed text-rcs-muted"
               >
-                <span className="font-bold text-[#142033]">
+                <span className="font-bold text-rcs-charcoal">
                   {benefit.title}{" "}
                 </span>
                 {benefit.description}
@@ -70,17 +68,16 @@ const WhyChooseAbsolute = () => {
             ))}
           </div>
 
-          {/* CONTACT BUTTON */}
-          <a
-            href="/contact"
-            className="group/btn mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-[#F26522] px-7 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-[#142033] hover:shadow-lg"
+          <Link
+            to="/contact-us"
+            className="group/btn mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-rcs-gold px-7 py-3.5 text-sm font-bold text-rcs-charcoal transition-all duration-300 hover:-translate-y-1 hover:bg-rcs-gold-hover hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold-ink motion-reduce:transition-none"
           >
-            Get in touch with us
+            Contact our team
             <ArrowUpRight
               size={17}
               className="transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,138 +1,140 @@
 
-import React, { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const faqData = [
   {
-    question: "What are the signs I need a new roof?",
+    question: "How often should I have my roof inspected?",
     answer:
-      "Signs include missing or damaged shingles, leaks, sagging areas, granules in gutters, and a roof age of 20 years or more. A professional inspection can help determine whether repairs or a replacement are needed.",
+      "A professional roof inspection at least once a year, and after severe weather, can help identify damage early. Regular inspections are especially useful for catching issues that may not be visible from the ground.",
   },
   {
-    question: "How long does a roof replacement take?",
+    question: "Can my roof be repaired, or does it need replacement?",
     answer:
-      "Most residential roof replacements take 1–3 days, depending on the roof size, materials, weather conditions, and complexity of the project.",
+      "The right option depends on the roof's age, the extent of the damage, and its overall condition. An inspection can help determine whether a focused repair or a replacement is the better long-term solution.",
   },
   {
-    question: "What roofing materials do you offer?",
+    question: "Should I schedule an inspection after a storm?",
     answer:
-      "Common roofing options include asphalt shingles, metal roofing, tile roofing, and flat roofing systems. Contact our team to discuss materials suitable for your property.",
+      "Yes. Hail, high winds, and fallen debris can damage roofing even when the damage is difficult to see from the ground. Avoid climbing onto the roof and arrange a professional inspection if you suspect damage.",
   },
   {
-    question: "What factors affect the cost of a new roof?",
+    question: "How should I prepare my home for a roof replacement?",
     answer:
-      "The cost depends on your roof's size, slope, materials, labor, existing roof condition, and any additional repairs required.",
+      "Move fragile items away from walls and ceilings, clear the driveway and work areas, and secure pets indoors. Your roofing team can share project-specific preparation steps before work begins.",
   },
   {
-    question: "How long does a new roof last?",
+    question: "Can a roof be installed during cold weather?",
     answer:
-      "Roof lifespan depends on the material, installation quality, climate, and maintenance. Asphalt shingles commonly last around 20–30 years, while some metal and tile roofs can last considerably longer.",
+      "Installation can sometimes proceed in colder weather, but temperature, precipitation, and the roofing material affect the process. A contractor can advise whether conditions are suitable for your project.",
   },
 ];
 
-const RoofingFaqSection = () => {
+const RoofingAdditionalFaqs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const faqId = useId();
 
   const toggleFaq = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    setActiveIndex((current) => (current === index ? null : index));
   };
 
   return (
-    <section className="w-full bg-white px-5 py-16 sm:px-8 lg:py-24">
-      <div className="mx-auto max-w-7xl">
-        {/* SECTION INTRO */}
-        <div className="mx-auto max-w-6xl text-center">
-          <div className="mb-4 flex items-center justify-center gap-3">
-            <span className="h-px w-12 bg-[#F26522] sm:w-32" />
-            <span className="whitespace-nowrap text-sm font-semibold uppercase tracking-wide text-[#F26522]">
-              ROOFING FAQS
+    <section
+      aria-labelledby={`${faqId}-heading`}
+      className="w-full bg-white py-16 font-sans text-rcs-charcoal md:py-24"
+    >
+      <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-10 lg:px-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-5 flex items-center justify-center gap-3">
+            <span aria-hidden="true" className="h-px w-7 bg-rcs-gold" />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-rcs-gold-ink sm:text-xs">
+              ROOF CARE
             </span>
-            <span className="h-px w-12 bg-[#F26522] sm:w-32" />
+            <span aria-hidden="true" className="h-px w-7 bg-rcs-gold" />
           </div>
 
-          <h2 className="text-3xl font-extrabold leading-tight text-[#142033] sm:text-4xl">
-            Comprehensive Answers to Your Roofing Questions
+          <h2
+            id={`${faqId}-heading`}
+            className="font-heading text-3xl font-bold leading-[1.15] tracking-[-0.03em] text-balance sm:text-4xl lg:text-[44px]"
+          >
+            Roof Repair and{" "}
+            <span className="text-rcs-gold-ink">Maintenance FAQs</span>
           </h2>
 
-          <p className="mx-auto mt-5 max-w-5xl text-sm leading-7 text-[#526071] sm:text-base">
-            Roofing can be a complex topic, whether you're
-            considering a new installation, repairs, or
-            maintenance. At{" "}
-            <span className="font-semibold text-[#4A90D9]">
-              Absolute Construction
-            </span>
-            , we understand homeowners have many questions about
-            their roofing options and care. To help you make
-            informed decisions, we've compiled this list of{" "}
-            <strong className="text-[#142033]">
-              frequently asked roofing questions
-            </strong>
-            , covering everything from materials to warranties.
+          <p className="mx-auto mt-5 text-base leading-[1.8] text-pretty text-rcs-muted sm:text-[17px]">
+            Learn how routine inspections, timely repairs, and a little
+            preparation can help you care for your roof.
           </p>
         </div>
 
-        {/* FAQ AREA */}
-        <div className="mx-auto mt-16 max-w-4xl">
-          <div className="mb-8 text-center">
-            <h3 className="text-2xl font-extrabold text-[#142033] sm:text-3xl">
-              General Roofing Questions
-            </h3>
+        <div className="mx-auto mt-12 max-w-4xl space-y-4 md:mt-14">
+          {faqData.map((faq, index) => {
+            const isOpen = activeIndex === index;
+            const questionId = `${faqId}-question-${index}`;
+            const answerId = `${faqId}-answer-${index}`;
 
-            <p className="mt-3 text-lg font-bold text-[#F26522] sm:text-xl">
-              Understanding the Basics of Roofing
-            </p>
-          </div>
-
-          {/* ACCORDION */}
-          <div className="space-y-3">
-            {faqData.map((faq, index) => {
-              const isOpen = activeIndex === index;
-
-              return (
-                <div
-                  key={index}
-                  className={`overflow-hidden rounded-lg border bg-white transition-all duration-300 ${
-                    isOpen
-                      ? "border-[#F26522]/50 shadow-md shadow-[#F26522]/5"
-                      : "border-gray-200 hover:border-[#F26522]/40"
-                  }`}
-                >
+            return (
+              <div
+                key={faq.question}
+                className={`overflow-hidden rounded-xl border transition-colors duration-200 motion-reduce:transition-none ${
+                  isOpen
+                    ? "border-rcs-gold/50 bg-rcs-charcoal shadow-[0_8px_24px_rgba(16,14,11,0.08)]"
+                    : "border-rcs-gold/25 bg-rcs-surface hover:border-rcs-gold/60"
+                }`}
+              >
+                <h3>
                   <button
+                    id={questionId}
                     type="button"
                     aria-expanded={isOpen}
-                    aria-controls={`faq-answer-${index}`}
+                    aria-controls={answerId}
                     onClick={() => toggleFaq(index)}
-                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                    className={`group flex min-h-16 w-full cursor-pointer items-center justify-between gap-4 rounded-xl px-5 py-5 text-left focus-visible:outline-2 focus-visible:-outline-offset-4 motion-reduce:transition-none sm:px-7 ${
+                      isOpen
+                        ? "text-rcs-gold focus-visible:outline-rcs-gold"
+                        : "text-rcs-charcoal focus-visible:outline-rcs-gold-ink"
+                    }`}
                   >
-                    <span className="text-sm font-bold text-[#142033] sm:text-base">
+                    <span className="font-heading text-base font-semibold leading-relaxed sm:text-lg">
                       {faq.question}
                     </span>
-
-                    <ChevronDown
-                      size={19}
-                      className={`shrink-0 text-[#F26522] transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
+                    <span
+                      aria-hidden="true"
+                      className={`flex size-9 shrink-0 items-center justify-center rounded-full transition-colors duration-200 motion-reduce:transition-none ${
+                        isOpen
+                          ? "bg-rcs-gold text-rcs-charcoal"
+                          : "bg-rcs-gold/10 text-rcs-gold-ink group-hover:bg-rcs-gold/20"
                       }`}
-                    />
+                    >
+                      <ChevronDown
+                        size={18}
+                        strokeWidth={1.8}
+                        className={`transition-transform duration-200 motion-reduce:transition-none ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </span>
                   </button>
+                </h3>
 
-                  <div
-                    id={`faq-answer-${index}`}
-                    hidden={!isOpen}
-                    className="px-5 pb-5"
-                  >
-                    <p className="text-sm leading-7 text-[#647083]">
-                      {faq.answer}
-                    </p>
-                  </div>
+                <div
+                  id={answerId}
+                  role="region"
+                  aria-labelledby={questionId}
+                  hidden={!isOpen}
+                  className="px-5 pb-6 sm:px-7"
+                >
+                  <p className="border-t border-rcs-cream/15 pt-4 text-base leading-[1.8] text-rcs-cream/85">
+                    {faq.answer}
+                  </p>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
 
-export default RoofingFaqSection;
+export default RoofingAdditionalFaqs;

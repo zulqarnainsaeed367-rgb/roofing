@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const faqSections = [
@@ -69,8 +69,9 @@ const faqSections = [
   },
 ];
 
-const FaqAccordion = ({ questions, sectionId }) => {
+const FaqAccordion = ({ questions }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const faqId = useId();
 
   const handleToggle = (index) => {
     setActiveIndex((previous) =>
@@ -82,42 +83,61 @@ const FaqAccordion = ({ questions, sectionId }) => {
     <div className="mx-auto mt-8 max-w-4xl space-y-3">
       {questions.map((faq, index) => {
         const isOpen = activeIndex === index;
-        const answerId = `faq-answer-${sectionId}-${index}`;
+        const questionId = `${faqId}-question-${index}`;
+        const answerId = `${faqId}-answer-${index}`;
 
         return (
           <div
-            key={index}
-            className={`overflow-hidden rounded-lg border bg-white transition-all duration-300 ${
+            key={faq.question}
+            className={`overflow-hidden rounded-xl border transition-colors duration-200 motion-reduce:transition-none ${
               isOpen
-                ? "border-[#F26522]/40 shadow-sm"
-                : "border-[#E5E7EB] hover:border-[#F26522]/40"
+                ? "border-rcs-gold/50 bg-rcs-charcoal shadow-[0_8px_24px_rgba(16,14,11,0.08)]"
+                : "border-rcs-gold/25 bg-white hover:border-rcs-gold/60"
             }`}
           >
-            <button
-              type="button"
-              aria-expanded={isOpen}
-              aria-controls={answerId}
-              onClick={() => handleToggle(index)}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-            >
-              <span className="text-sm font-bold text-[#142033] sm:text-base">
-                {faq.question}
-              </span>
-
-              <ChevronDown
-                size={19}
-                className={`shrink-0 text-[#F26522] transition-transform duration-300 ${
-                  isOpen ? "rotate-180" : ""
+            <h3>
+              <button
+                id={questionId}
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={answerId}
+                onClick={() => handleToggle(index)}
+                className={`group flex min-h-16 w-full cursor-pointer items-center justify-between gap-4 rounded-xl px-5 py-5 text-left focus-visible:outline-2 focus-visible:-outline-offset-4 motion-reduce:transition-none sm:px-7 ${
+                  isOpen
+                    ? "text-rcs-gold focus-visible:outline-rcs-gold"
+                    : "text-rcs-charcoal focus-visible:outline-rcs-gold-ink"
                 }`}
-              />
-            </button>
+              >
+                <span className="font-heading text-base font-semibold leading-relaxed sm:text-lg">
+                  {faq.question}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className={`flex size-9 shrink-0 items-center justify-center rounded-full transition-colors duration-200 motion-reduce:transition-none ${
+                    isOpen
+                      ? "bg-rcs-gold text-rcs-charcoal"
+                      : "bg-rcs-gold/10 text-rcs-gold-ink group-hover:bg-rcs-gold/20"
+                  }`}
+                >
+                  <ChevronDown
+                    size={18}
+                    strokeWidth={1.8}
+                    className={`transition-transform duration-200 motion-reduce:transition-none ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </span>
+              </button>
+            </h3>
 
             <div
               id={answerId}
+              role="region"
+              aria-labelledby={questionId}
               hidden={!isOpen}
-              className="px-5 pb-5"
+              className="px-5 pb-6 sm:px-7"
             >
-              <p className="text-sm leading-7 text-[#647083]">
+              <p className="border-t border-rcs-cream/15 pt-4 text-base leading-[1.8] text-rcs-cream/85">
                 {faq.answer}
               </p>
             </div>
@@ -129,34 +149,49 @@ const FaqAccordion = ({ questions, sectionId }) => {
 };
 
 const RoofingWarrantyMaterialFaqs = () => {
-  return (
-    <div className="w-full">
-      {faqSections.map((section, index) => (
-        <section
-          key={index}
-          className={`${section.background} px-5 py-16 sm:px-8 lg:py-20`}
-        >
-          <div className="mx-auto max-w-6xl">
-            {/* Section Heading */}
-            <div className="text-center">
-              <h2 className="text-2xl font-extrabold leading-tight text-[#142033] sm:text-3xl lg:text-4xl">
-                {section.title}
-              </h2>
+  const sectionId = useId();
 
-              <p className="mt-4 text-lg font-bold text-[#F26522] sm:text-xl lg:text-[22px]">
+  return (
+    <section
+      aria-labelledby={`${sectionId}-heading`}
+      className="w-full bg-rcs-surface py-16 font-sans text-rcs-charcoal md:py-24"
+    >
+      <div className="mx-auto w-full max-w-[1280px] space-y-16 px-6 sm:px-10 lg:px-16">
+        {faqSections.map((section, index) => (
+          <section
+            key={section.title}
+            aria-labelledby={`${sectionId}-section-${index}`}
+            className="mx-auto w-full max-w-4xl"
+          >
+            {index === 0 && (
+              <h2 id={`${sectionId}-heading`} className="sr-only">
+                Roofing warranty and material FAQs
+              </h2>
+            )}
+            <div className="text-center">
+              <div className="mb-5 flex items-center justify-center gap-3">
+                <span aria-hidden="true" className="h-px w-7 bg-rcs-gold" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-rcs-gold-ink sm:text-xs">
+                  {index === 0 ? "WARRANTIES & INSURANCE" : "ROOFING MATERIALS"}
+                </span>
+                <span aria-hidden="true" className="h-px w-7 bg-rcs-gold" />
+              </div>
+              <h3
+                id={`${sectionId}-section-${index}`}
+                className="font-heading text-2xl font-bold leading-[1.2] tracking-[-0.03em] text-balance sm:text-3xl lg:text-4xl"
+              >
+                {section.title}
+              </h3>
+              <p className="mt-3 text-base leading-relaxed text-rcs-muted sm:text-lg">
                 {section.subtitle}
               </p>
             </div>
 
-            {/* FAQ Accordion */}
-            <FaqAccordion
-              questions={section.questions}
-              sectionId={index}
-            />
-          </div>
-        </section>
-      ))}
-    </div>
+            <FaqAccordion questions={section.questions} />
+          </section>
+        ))}
+      </div>
+    </section>
   );
 };
 

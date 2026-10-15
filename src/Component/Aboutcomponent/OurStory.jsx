@@ -2,17 +2,19 @@ const OurStory = () => {
   return (
     <section
       aria-labelledby="story-heading"
-      className="section-space bg-rcs-surface"
+      className="bg-rcs-surface py-16 font-sans md:py-20"
     >
-      <div className="site-container grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-        <div>
-          <p className="eyebrow mb-4">Our Story</p>
-          <h2 id="story-heading" className="section-title max-w-md text-rcs-charcoal">
-            Built on trust and quality work
-          </h2>
+      <div className="mx-auto max-w-[1280px] px-6 text-center sm:px-10 lg:px-16">
+        <div className="mb-4 flex items-center justify-center gap-3">
+          <span aria-hidden="true" className="h-px w-8 bg-rcs-gold" />
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-rcs-gold-ink">Our Story</p>
+          <span aria-hidden="true" className="h-px w-8 bg-rcs-gold" />
         </div>
+        <h2 id="story-heading" className="mx-auto max-w-3xl font-heading text-3xl font-bold leading-[1.15] tracking-[-0.03em] text-balance text-rcs-charcoal sm:text-4xl lg:text-[44px]">
+          Built on Trust and <span className="text-rcs-gold-ink">Quality Work</span>
+        </h2>
 
-        <p className="section-copy max-w-2xl lg:pt-8">
+        <p className="mx-auto mt-6 max-w-3xl text-base leading-[1.8] text-pretty text-rcs-muted">
           RCS Construction Services is dedicated to delivering reliable roofing
           and construction solutions built on quality craftsmanship and customer
           trust. Our commitment to safety, integrity, and professional service

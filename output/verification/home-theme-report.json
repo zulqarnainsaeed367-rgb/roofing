@@ -1,0 +1,314 @@
+{
+  "reference": {
+    "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif",
+    "gold": "rgb(217, 164, 76)",
+    "charcoal": "rgb(16, 14, 11)"
+  },
+  "layouts": [
+    {
+      "width": 1440,
+      "pageWidth": 1425,
+      "sectionCount": 6,
+      "sections": [
+        {
+          "heading": "Roofing That ProtectsWhat Matters Most.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Turning Roofing Needs into Tailored Solutions",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Protecting Your Home with Expert Craftsmanship",
+          "background": "rgb(248, 246, 241)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "We Are Proud To Serve Our Community",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Services Done Right",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Done Right.Customers Who Agree.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        }
+      ],
+      "gold": "rgb(217, 164, 76)",
+      "heroFont": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif",
+      "bodyFont": "Inter, ui-sans-serif, system-ui, sans-serif",
+      "serviceCards": 6,
+      "featureCount": 6,
+      "reviewCards": 20,
+      "heroImages": [
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/12243107/pexels-photo-12243107.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/37704251/pexels-photo-37704251.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=85"
+        }
+      ],
+      "video": true,
+      "anchorTarget": true
+    },
+    {
+      "width": 1024,
+      "pageWidth": 1009,
+      "sectionCount": 6,
+      "sections": [
+        {
+          "heading": "Roofing That ProtectsWhat Matters Most.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Turning Roofing Needs into Tailored Solutions",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Protecting Your Home with Expert Craftsmanship",
+          "background": "rgb(248, 246, 241)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "We Are Proud To Serve Our Community",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Services Done Right",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Done Right.Customers Who Agree.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        }
+      ],
+      "gold": "rgb(217, 164, 76)",
+      "heroFont": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif",
+      "bodyFont": "Inter, ui-sans-serif, system-ui, sans-serif",
+      "serviceCards": 6,
+      "featureCount": 6,
+      "reviewCards": 20,
+      "heroImages": [
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/12243107/pexels-photo-12243107.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/37704251/pexels-photo-37704251.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=85"
+        }
+      ],
+      "video": true,
+      "anchorTarget": true
+    },
+    {
+      "width": 768,
+      "pageWidth": 753,
+      "sectionCount": 6,
+      "sections": [
+        {
+          "heading": "Roofing That ProtectsWhat Matters Most.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Turning Roofing Needs into Tailored Solutions",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Protecting Your Home with Expert Craftsmanship",
+          "background": "rgb(248, 246, 241)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "We Are Proud To Serve Our Community",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Services Done Right",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Done Right.Customers Who Agree.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        }
+      ],
+      "gold": "rgb(217, 164, 76)",
+      "heroFont": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif",
+      "bodyFont": "Inter, ui-sans-serif, system-ui, sans-serif",
+      "serviceCards": 6,
+      "featureCount": 6,
+      "reviewCards": 20,
+      "heroImages": [
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/12243107/pexels-photo-12243107.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/37704251/pexels-photo-37704251.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=85"
+        }
+      ],
+      "video": true,
+      "anchorTarget": true
+    },
+    {
+      "width": 390,
+      "pageWidth": 390,
+      "sectionCount": 6,
+      "sections": [
+        {
+          "heading": "Roofing That ProtectsWhat Matters Most.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Turning Roofing Needs into Tailored Solutions",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Protecting Your Home with Expert Craftsmanship",
+          "background": "rgb(248, 246, 241)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "We Are Proud To Serve Our Community",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Services Done Right",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Done Right.Customers Who Agree.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        }
+      ],
+      "gold": "rgb(217, 164, 76)",
+      "heroFont": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif",
+      "bodyFont": "Inter, ui-sans-serif, system-ui, sans-serif",
+      "serviceCards": 6,
+      "featureCount": 6,
+      "reviewCards": 20,
+      "heroImages": [
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/12243107/pexels-photo-12243107.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/37704251/pexels-photo-37704251.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=85"
+        }
+      ],
+      "video": true,
+      "anchorTarget": true
+    },
+    {
+      "width": 320,
+      "pageWidth": 320,
+      "sectionCount": 6,
+      "sections": [
+        {
+          "heading": "Roofing That ProtectsWhat Matters Most.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Turning Roofing Needs into Tailored Solutions",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Protecting Your Home with Expert Craftsmanship",
+          "background": "rgb(248, 246, 241)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "We Are Proud To Serve Our Community",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Services Done Right",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        },
+        {
+          "heading": "Roofing Done Right.Customers Who Agree.",
+          "background": "rgb(16, 14, 11)",
+          "font": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif"
+        }
+      ],
+      "gold": "rgb(217, 164, 76)",
+      "heroFont": "Manrope, Inter, ui-sans-serif, system-ui, sans-serif",
+      "bodyFont": "Inter, ui-sans-serif, system-ui, sans-serif",
+      "serviceCards": 6,
+      "featureCount": 6,
+      "reviewCards": 20,
+      "heroImages": [
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/12243107/pexels-photo-12243107.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.pexels.com/photos/37704251/pexels-photo-37704251.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        },
+        {
+          "loaded": true,
+          "src": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=85"
+        }
+      ],
+      "video": true,
+      "anchorTarget": true
+    }
+  ],
+  "carouselWorks": true,
+  "anchor": {
+    "hash": "#home-services",
+    "top": 108.90625,
+    "header": 85
+  },
+  "railRunning": "running",
+  "railPaused": "paused",
+  "contactNavigation": true,
+  "errors": []
+}

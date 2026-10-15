@@ -4,7 +4,10 @@ import Footer from '../common/Footer'
 
 function MainLayout() {
   const { pathname } = useLocation()
-  const isFullWidthPage = ['/', '/about-us', '/about-us/', '/residential', '/residential/', '/contact-us', '/contact-us/', '/faq', '/faq/'].includes(pathname)
+  const isFullWidthPage = [
+    '/', '/about-us', '/residential', '/contact-us', '/faq',
+    '/free-inspection', '/capability-statement', '/commercial',
+  ].includes(pathname.replace(/\/$/, '') || '/')
 
   return (
     <div className="site-layout">

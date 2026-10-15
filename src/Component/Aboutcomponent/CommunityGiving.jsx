@@ -1,6 +1,4 @@
 
-import React from "react";
-import { motion } from "framer-motion";
 import {
   HeartHandshake,
   Handshake,
@@ -12,43 +10,33 @@ import communityImage from "../../assets/roof1.png";
 
 const CommunityGiving = () => {
   return (
-    <section className="w-full overflow-hidden bg-white px-5 py-16 sm:px-8 md:py-20 lg:px-12">
-      <div className="mx-auto max-w-7xl">
+    <section aria-labelledby="community-heading" className="w-full overflow-hidden bg-rcs-surface py-16 font-sans md:py-20">
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16">
 
         {/* TOP CONTENT */}
         <div className="mb-12 grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-16">
 
           {/* LEFT HEADING */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
+          <div>
             <div className="mb-4 flex items-center gap-3">
-              <span className="h-[2px] w-9 bg-[#D4AF37]" />
+              <span aria-hidden="true" className="h-px w-9 bg-rcs-gold" />
 
-              <span className="text-sm font-bold uppercase tracking-wider text-[#B89229]">
+              <span className="text-xs font-semibold uppercase tracking-[0.18em] text-rcs-gold-ink">
                 Community Giving
               </span>
             </div>
 
-            <h2 className="text-3xl font-extrabold leading-tight text-[#071C26] sm:text-4xl lg:text-[42px]">
+            <h2 id="community-heading" className="font-heading text-3xl font-bold leading-[1.15] tracking-[-0.03em] text-rcs-charcoal sm:text-4xl lg:text-[44px]">
               Making a Difference,
               <span className="block">
                 One Roof at a Time
               </span>
             </h2>
-          </motion.div>
+          </div>
 
           {/* RIGHT DESCRIPTION */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="text-base leading-8 text-[#364554] md:text-[17px]">
+          <div>
+            <p className="text-base leading-[1.8] text-rcs-muted">
               At RCS Construction Services, we believe our
               responsibility goes beyond providing dependable
               roofing and construction solutions. We value the
@@ -59,77 +47,68 @@ const CommunityGiving = () => {
               difference through quality service and
               meaningful connections.
             </p>
-          </motion.div>
+          </div>
         </div>
 
         {/* BOTTOM GRID */}
         <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-[0.9fr_1.1fr]">
 
           {/* LEFT IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="group relative min-h-[390px] overflow-hidden rounded-xl bg-[#071C26] shadow-lg md:min-h-[500px]"
+          <div
+            className="relative min-h-[390px] overflow-hidden rounded-md bg-rcs-charcoal md:min-h-[500px]"
           >
             <img
               src={communityImage}
               alt="Roofing professionals working on a residential roof"
               loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+              className="absolute inset-0 h-full w-full object-cover object-center"
             />
 
             {/* DARK GRADIENT */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#071C26]/95 via-[#071C26]/20 to-transparent" />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-rcs-charcoal/95 via-rcs-charcoal/20 to-transparent" />
 
             {/* IMAGE CONTENT */}
             <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
-              <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-[#D4AF37] text-[#071C26] shadow-lg">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-md bg-rcs-gold text-rcs-charcoal">
                 <HeartHandshake
                   size={28}
                   strokeWidth={1.8}
+                  aria-hidden="true"
                 />
               </div>
 
-              <h3 className="text-2xl font-bold leading-snug text-white sm:text-3xl">
+              <h3 className="font-heading text-2xl font-semibold leading-snug tracking-[-0.02em] text-rcs-cream sm:text-3xl">
                 Stronger Communities,
                 <br />
                 Stronger Connections
               </h3>
 
-              <div className="mt-5 h-1 w-20 rounded-full bg-[#D4AF37]" />
+              <div aria-hidden="true" className="mt-5 h-px w-16 bg-rcs-gold" />
             </div>
-          </motion.div>
+          </div>
 
           {/* RIGHT CARD */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="relative overflow-hidden rounded-xl border border-[#D4AF37]/30 bg-[#FFF7F2] p-6 shadow-sm sm:p-8 lg:p-9"
+          <div
+            className="relative overflow-hidden rounded-md border border-rcs-gold/25 bg-rcs-cream p-6 sm:p-8 lg:p-9"
           >
-            {/* Decorative Corner */}
-            <div className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#D4AF37]/10" />
-
             <div className="relative z-10">
 
               {/* ICON */}
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-[#D4AF37]/15 text-[#B89229]">
+              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-md border border-rcs-gold/30 text-rcs-gold-ink">
                 <Handshake
-                  size={32}
+                  size={28}
                   strokeWidth={1.6}
+                  aria-hidden="true"
                 />
               </div>
 
               {/* HEADING */}
-              <h3 className="mb-5 text-2xl font-extrabold leading-tight text-[#071C26] md:text-[30px]">
+              <h3 className="mb-5 font-heading text-2xl font-semibold leading-snug tracking-[-0.02em] text-rcs-charcoal md:text-[28px]">
                 Our Commitment to Community
               </h3>
 
               {/* DESCRIPTION */}
-              <p className="mb-6 text-[15px] leading-8 text-[#364554] md:text-base">
+              <p className="mb-6 text-base leading-[1.8] text-rcs-muted">
                 At RCS Construction Services, our commitment
                 extends beyond the roofs we build and repair.
                 We strive to make a positive impact by treating
@@ -139,9 +118,9 @@ const CommunityGiving = () => {
               </p>
 
               {/* BUILDING TRUST */}
-              <div className="mb-5 border-l-[3px] border-[#D4AF37] pl-4">
-                <p className="text-[15px] leading-8 text-[#364554]">
-                  <span className="font-bold text-[#071C26]">
+              <div className="mb-5 border-l-2 border-rcs-gold pl-4">
+                <p className="text-base leading-[1.8] text-rcs-muted">
+                  <span className="font-semibold text-rcs-charcoal">
                     Building Trust:{" "}
                   </span>
                   We believe meaningful relationships begin
@@ -152,9 +131,9 @@ const CommunityGiving = () => {
               </div>
 
               {/* SERVING WITH PURPOSE */}
-              <div className="mb-7 border-l-[3px] border-[#D4AF37] pl-4">
-                <p className="text-[15px] leading-8 text-[#364554]">
-                  <span className="font-bold text-[#071C26]">
+              <div className="mb-7 border-l-2 border-rcs-gold pl-4">
+                <p className="text-base leading-[1.8] text-rcs-muted">
+                  <span className="font-semibold text-rcs-charcoal">
                     Serving with Purpose:{" "}
                   </span>
                   Whether working on a residential roof or a
@@ -165,19 +144,20 @@ const CommunityGiving = () => {
               </div>
 
               {/* BOTTOM HIGHLIGHT BOX */}
-              <div className="mb-7 flex items-start gap-4 rounded-lg border-l-4 border-[#D4AF37] bg-white p-5 shadow-sm">
+              <div className="mb-7 flex flex-col items-start gap-4 rounded-md border border-rcs-gold/25 bg-rcs-surface p-5 sm:flex-row">
                 <HeartHandshake
                   size={29}
                   strokeWidth={1.7}
-                  className="mt-1 shrink-0 text-[#B89229]"
+                  className="mt-1 shrink-0 text-rcs-gold-ink"
+                  aria-hidden="true"
                 />
 
                 <div>
-                  <h4 className="mb-2 text-lg font-bold text-[#071C26]">
+                  <h4 className="mb-2 font-heading text-lg font-semibold text-rcs-charcoal">
                     More Than Just Roofing
                   </h4>
 
-                  <p className="text-sm leading-7 text-[#364554]">
+                  <p className="text-base leading-[1.8] text-rcs-muted">
                     We are dedicated to quality craftsmanship,
                     dependable service, and relationships
                     that last beyond every completed project.
@@ -187,18 +167,19 @@ const CommunityGiving = () => {
 
               {/* CONTACT LINK */}
               <Link
-                to="/contact"
-                className="group inline-flex items-center gap-2 border-b-2 border-[#D4AF37] pb-1 font-bold text-[#071C26] transition-colors duration-300 hover:text-[#B89229]"
+                to="/contact-us"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[3px] bg-rcs-gold px-5 py-3 text-center text-sm font-semibold text-rcs-charcoal transition-colors hover:bg-rcs-gold-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold-ink motion-reduce:transition-none"
               >
                 Connect With Our Team
 
                 <ArrowUpRight
                   size={20}
-                  className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                  className="shrink-0"
+                  aria-hidden="true"
                 />
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

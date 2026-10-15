@@ -1,18 +1,16 @@
 
-import React, { useRef } from "react";
-import { motion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import { A11y, Autoplay, Keyboard } from "swiper/modules";
 import {
   ChevronLeft,
   ChevronRight,
-  ArrowUpRight,
+  Pause,
+  Play,
 } from "lucide-react";
 
 import "swiper/css";
-import "swiper/css/navigation";
-
-// Add your roofing project images here
 import roof1 from "../../assets/roof1.png";
 import roof2 from "../../assets/roof2.png";
 import roof3 from "../../assets/roof3.png";
@@ -82,68 +80,112 @@ const projects = [
 
 const FeaturedWorks = () => {
   const swiperRef = useRef(null);
+  const focusWithinRef = useRef(false);
+  const resumeWhileFocusedRef = useRef(false);
+  const pointerOverSlidesRef = useRef(false);
+  const shouldReduceMotion = useReducedMotion();
+  const [isPaused, setIsPaused] = useState(false);
+
+  const syncAutoplay = useCallback(() => {
+    const swiper = swiperRef.current;
+    if (!swiper || swiper.destroyed) return;
+
+    const shouldPause =
+      shouldReduceMotion ||
+      isPaused ||
+      document.hidden ||
+      pointerOverSlidesRef.current ||
+      (focusWithinRef.current && !resumeWhileFocusedRef.current);
+
+    if (shouldPause) {
+      if (swiper.autoplay.running) swiper.autoplay.stop();
+    } else if (!swiper.autoplay.running) {
+      swiper.autoplay.start();
+    }
+  }, [isPaused, shouldReduceMotion]);
+
+  useEffect(() => {
+    syncAutoplay();
+    document.addEventListener("visibilitychange", syncAutoplay);
+    return () => document.removeEventListener("visibilitychange", syncAutoplay);
+  }, [syncAutoplay]);
 
   return (
-    <section className="relative w-full overflow-hidden bg-white px-5 py-16 sm:px-8 md:py-20 lg:px-12">
-      <div className="mx-auto max-w-7xl">
+    <section aria-labelledby="featured-works-heading" className="relative w-full overflow-hidden bg-rcs-cream py-16 font-sans md:py-20">
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16">
 
         {/* SECTION HEADING */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-11 text-center"
-        >
+        <div className="mb-11 text-center">
           {/* Subtitle */}
           <div className="mb-4 flex items-center justify-center gap-3">
-            <span className="h-[2px] w-8 bg-[#D4AF37]" />
+            <span aria-hidden="true" className="h-px w-8 bg-rcs-gold" />
 
-            <span className="text-sm font-bold uppercase tracking-[0.12em] text-[#B89229]">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-rcs-gold-ink">
               Featured Works
             </span>
 
-            <span className="h-[2px] w-8 bg-[#D4AF37]" />
+            <span aria-hidden="true" className="h-px w-8 bg-rcs-gold" />
           </div>
 
           {/* Title */}
-          <h2 className="text-3xl font-extrabold leading-tight text-[#071C26] sm:text-4xl lg:text-[44px]">
+          <h2 id="featured-works-heading" className="font-heading text-3xl font-bold leading-[1.15] tracking-[-0.03em] text-rcs-charcoal sm:text-4xl lg:text-[44px]">
             Our Work Speaks{" "}
-            <span className="text-[#B89229]">
+            <span className="text-rcs-gold-ink">
               for Itself
             </span>
           </h2>
 
           {/* Description */}
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-8 text-[#364554] md:text-lg">
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-[1.8] text-rcs-muted">
             Explore roofing craftsmanship, durable materials,
             and professional solutions that reflect the quality
             and attention to detail valued by RCS Construction
             Services.
           </p>
-        </motion.div>
+        </div>
 
         {/* SLIDER WRAPPER */}
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15 }}
+        <div
           className="relative"
+          onFocusCapture={() => {
+            focusWithinRef.current = true;
+            resumeWhileFocusedRef.current = false;
+            syncAutoplay();
+          }}
+          onBlurCapture={(event) => {
+            if (event.currentTarget.contains(event.relatedTarget)) return;
+            focusWithinRef.current = false;
+            resumeWhileFocusedRef.current = false;
+            syncAutoplay();
+          }}
         >
+          <div
+            onPointerEnter={(event) => {
+              if (event.pointerType !== "mouse") return;
+              pointerOverSlidesRef.current = true;
+              syncAutoplay();
+            }}
+            onPointerLeave={(event) => {
+              if (event.pointerType !== "mouse") return;
+              pointerOverSlidesRef.current = false;
+              syncAutoplay();
+            }}
+          >
           <Swiper
-            modules={[Autoplay, Navigation]}
+            modules={[A11y, Autoplay, Keyboard]}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
             }}
             slidesPerView={1}
             spaceBetween={18}
             loop={true}
-            speed={850}
-            autoplay={{
+            speed={shouldReduceMotion ? 0 : 650}
+            keyboard={{ enabled: true, onlyInViewport: true, pageUpDown: false }}
+            a11y={{ containerRoleDescriptionMessage: "carousel", itemRoleDescriptionMessage: "slide" }}
+            aria-label="Roofing projects"
+            autoplay={shouldReduceMotion ? false : {
               delay: 3200,
               disableOnInteraction: false,
-              pauseOnMouseEnter: true,
             }}
             breakpoints={{
               640: {
@@ -163,52 +205,44 @@ const FeaturedWorks = () => {
           >
             {projects.map((project) => (
               <SwiperSlide key={project.id}>
-                <div className="group relative h-[280px] cursor-pointer overflow-hidden rounded-xl bg-[#071C26] shadow-md sm:h-[310px] lg:h-[340px]">
+                <div className="relative h-[280px] overflow-hidden rounded-md border border-rcs-charcoal/10 bg-rcs-charcoal sm:h-[310px] lg:h-[340px]">
 
                   {/* IMAGE */}
                   <img
                     src={project.image}
                     alt={project.title}
                     loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="h-full w-full object-cover"
                   />
 
                   {/* DARK GRADIENT */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071C26]/95 via-[#071C26]/10 to-transparent opacity-75 transition-opacity duration-500 group-hover:opacity-100" />
-
-                  {/* GOLD TOP LINE */}
-                  <div className="absolute left-0 top-0 h-1 w-0 bg-[#D4AF37] transition-all duration-500 group-hover:w-full" />
+                  <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-rcs-charcoal/95 via-rcs-charcoal/10 to-transparent" />
 
                   {/* PROJECT DETAILS */}
-                  <div className="absolute bottom-0 left-0 right-0 translate-y-3 p-6 transition-transform duration-500 group-hover:translate-y-0">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
 
-                    <span className="mb-2 block text-xs font-bold uppercase tracking-widest text-[#D4AF37]">
+                    <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-rcs-gold">
                       {project.category}
                     </span>
 
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-xl font-bold text-white sm:text-2xl">
-                        {project.title}
-                      </h3>
-
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/50 bg-white/10 text-white transition-all duration-300 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-[#071C26]">
-                        <ArrowUpRight size={20} />
-                      </span>
-                    </div>
+                    <h3 className="font-heading text-xl font-semibold leading-snug tracking-[-0.02em] text-rcs-cream">
+                      {project.title}
+                    </h3>
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+          </div>
 
           {/* PREVIOUS BUTTON */}
           <button
             type="button"
             onClick={() => swiperRef.current?.slidePrev()}
             aria-label="Previous project"
-            className="absolute -left-3 top-[43%] z-20 flex h-11 w-11 items-center justify-center rounded-lg border border-[#D4AF37]/30 bg-white text-[#071C26] shadow-lg transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#071C26] sm:-left-5 lg:-left-6"
+            className="absolute -left-3 top-[43%] z-20 flex h-12 w-12 items-center justify-center rounded-[3px] border border-rcs-gold/40 bg-rcs-surface text-rcs-charcoal shadow-sm transition-colors hover:bg-rcs-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold-ink motion-reduce:transition-none sm:-left-5 lg:-left-6"
           >
-            <ChevronLeft size={23} />
+            <ChevronLeft size={23} aria-hidden="true" />
           </button>
 
           {/* NEXT BUTTON */}
@@ -216,14 +250,31 @@ const FeaturedWorks = () => {
             type="button"
             onClick={() => swiperRef.current?.slideNext()}
             aria-label="Next project"
-            className="absolute -right-3 top-[43%] z-20 flex h-11 w-11 items-center justify-center rounded-lg border border-[#D4AF37]/30 bg-white text-[#071C26] shadow-lg transition-all duration-300 hover:bg-[#D4AF37] hover:text-[#071C26] sm:-right-5 lg:-right-6"
+            className="absolute -right-3 top-[43%] z-20 flex h-12 w-12 items-center justify-center rounded-[3px] border border-rcs-gold/40 bg-rcs-surface text-rcs-charcoal shadow-sm transition-colors hover:bg-rcs-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold-ink motion-reduce:transition-none sm:-right-5 lg:-right-6"
           >
-            <ChevronRight size={23} />
+            <ChevronRight size={23} aria-hidden="true" />
           </button>
-        </motion.div>
+          {!shouldReduceMotion && (
+            <div className="mt-3 flex justify-center">
+              <button
+                type="button"
+                onClick={() => {
+                  // Explicit resume is allowed while this control keeps focus.
+                  resumeWhileFocusedRef.current = isPaused;
+                  setIsPaused((paused) => !paused);
+                }}
+                aria-pressed={isPaused}
+                className="inline-flex min-h-12 items-center gap-2 rounded-[3px] px-4 text-sm font-semibold text-rcs-gold-ink transition-colors hover:bg-rcs-gold/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rcs-gold-ink motion-reduce:transition-none"
+              >
+                {isPaused ? <Play size={16} aria-hidden="true" /> : <Pause size={16} aria-hidden="true" />}
+                {isPaused ? "Resume slideshow" : "Pause slideshow"}
+              </button>
+            </div>
+          )}
+        </div>
 
         {/* BOTTOM DECORATIVE LINE */}
-        <div className="mx-auto mt-8 h-[3px] w-20 rounded-full bg-[#D4AF37]" />
+        <div aria-hidden="true" className="mx-auto mt-8 h-px w-16 bg-rcs-gold" />
       </div>
     </section>
   );

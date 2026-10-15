@@ -56,9 +56,9 @@ const CoreValues = () => {
   return (
     <section
       aria-labelledby="core-values-heading"
-      className="w-full bg-rcs-charcoal px-6 py-16 font-sans text-rcs-cream sm:px-8 md:py-24 lg:px-12"
+      className="w-full bg-rcs-charcoal py-16 font-sans text-rcs-cream md:py-20"
     >
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16">
         <div className="mx-auto mb-10 max-w-3xl text-center md:mb-12">
           <div className="mb-4 flex items-center justify-center gap-3">
             <span aria-hidden="true" className="h-px w-7 bg-rcs-gold/60" />
@@ -73,7 +73,7 @@ const CoreValues = () => {
           >
             Building Beyond <span className="text-rcs-gold">Roofs</span>
           </h2>
-          <p className="mx-auto max-w-3xl font-sans text-base leading-[1.8] text-rcs-cream/75 sm:text-[17px]">
+          <p className="mx-auto max-w-3xl font-sans text-base leading-[1.8] text-rcs-cream/75">
             At RCS Construction Services, our core values define
             who we are and how we work. We believe that roofing
             and construction are about more than completing a
@@ -91,12 +91,12 @@ const CoreValues = () => {
             return (
               <article
                 key={value.id}
-                className="group min-w-0 rounded-2xl border border-rcs-gold/20 bg-rcs-card p-6 transition-colors duration-300 hover:border-rcs-gold/50 motion-reduce:transition-none sm:p-7"
+                className="group min-w-0 rounded-md border border-rcs-gold/20 bg-rcs-card p-6 transition-colors duration-300 hover:border-rcs-gold/50 motion-reduce:transition-none sm:p-7"
               >
-                <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-rcs-gold/10 text-rcs-gold transition-colors duration-300 group-hover:bg-rcs-gold group-hover:text-rcs-charcoal motion-reduce:transition-none">
+                <div className="mb-5 flex size-12 items-center justify-center rounded-[3px] bg-rcs-gold/10 text-rcs-gold transition-colors duration-300 group-hover:bg-rcs-gold group-hover:text-rcs-charcoal motion-reduce:transition-none">
                   <Icon size={25} strokeWidth={1.7} aria-hidden="true" />
                 </div>
-                <h3 className="mb-3 font-heading text-xl font-semibold leading-snug tracking-[-0.02em] text-rcs-cream">
+                <h3 className="mb-3 font-heading text-lg font-semibold leading-snug tracking-[-0.02em] text-rcs-cream">
                   {value.title}
                 </h3>
                 <p className="font-sans text-base leading-[1.8] text-rcs-cream/75">

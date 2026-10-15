@@ -111,38 +111,40 @@ function ServiceIcon({ name }) {
 function ServicesSection() {
   return (
     <section
-      className="relative overflow-hidden bg-cover bg-center bg-no-repeat py-16 sm:py-20 lg:py-24"
+      id="home-services"
+      aria-labelledby="home-services-heading"
+      className="relative scroll-mt-[calc(var(--site-header-height)+24px)] overflow-hidden bg-rcs-charcoal bg-cover bg-center bg-no-repeat py-16 font-sans md:py-20"
       style={{
         backgroundImage: `url(${servicesBg})`,
       }}
     >
       {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-[#0B0806]/85" />
+      <div className="absolute inset-0 bg-rcs-charcoal/85" />
 
       {/* SMALL GOLD EFFECT */}
-      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-[#0B0806]/90 via-[#0B0806]/65 to-[#0B0806]/80" />
+      <div className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-rcs-charcoal/90 via-rcs-charcoal/65 to-rcs-charcoal/80" />
 
       {/* CONTENT */}
-      <div className="relative z-10 mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
+      <div className="relative z-10 mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-16">
 
         {/* HEADING */}
         <div className="mx-auto mb-10 max-w-[800px] text-center lg:mb-12">
-          <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.22em] text-[#D9A44C]">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-rcs-gold">
             Our Services
           </p>
 
-          <h2 className="text-3xl font-bold leading-[1.1] text-[#FFF0C2] sm:text-4xl lg:text-[42px]">
+          <h2 id="home-services-heading" className="font-heading text-3xl font-bold leading-[1.15] tracking-[-0.03em] text-rcs-cream sm:text-4xl lg:text-[44px]">
             We Are Proud To Serve Our Community
           </h2>
 
-          <p className="mt-2 text-2xl font-bold leading-tight text-[#FFF0C2] sm:text-3xl">
+          <p className="mt-3 font-heading text-xl font-semibold leading-snug text-rcs-cream sm:text-2xl">
             We Provide The Best{' '}
-            <span className="text-[#D9A44C]">
+            <span className="text-rcs-gold">
               Roofing Services in Texas.
             </span>
           </p>
 
-          <p className="mx-auto mt-5 max-w-[640px] text-sm leading-7 text-[#FFF0C2]/65 sm:text-[15px]">
+          <p className="mx-auto mt-5 max-w-[640px] text-base leading-[1.8] text-rcs-cream/85">
             From inspections and repairs to complete roof replacements,
             RCS Construction Services delivers dependable roofing solutions
             designed to protect your property.
@@ -160,35 +162,34 @@ function ServicesSection() {
                 overflow-hidden
                 rounded-xl
                 border
-                border-[#D9A44C]/15
-                bg-[#FFFDF8]
+                border-rcs-gold/15
+                bg-rcs-surface
                 p-7
-                shadow-[0_10px_30px_rgba(0,0,0,0.18)]
-                transition-all
-                duration-300
-                hover:-translate-y-1.5
-                hover:border-[#D9A44C]/60
-                hover:shadow-[0_18px_45px_rgba(0,0,0,0.28)]
+                shadow-sm
+                transition-colors
+                duration-200
+                motion-reduce:transition-none
+                hover:border-rcs-gold/60
               "
             >
               {/* TOP GOLD LINE */}
-              <div className="absolute left-0 top-0 h-[3px] w-0 bg-[#D9A44C] transition-all duration-500 group-hover:w-full" />
+              <div aria-hidden="true" className="absolute left-0 top-0 h-[3px] w-0 bg-rcs-gold transition-[width] duration-200 group-hover:w-full motion-reduce:transition-none" />
 
               {/* ICON */}
-              <div className="mb-5 text-[#D9A44C]">
+              <div className="mb-5 text-rcs-gold-ink">
                 <ServiceIcon name={service.icon} />
               </div>
 
               {/* TITLE */}
-              <h3 className="text-[18px] font-bold text-[#0B0806]">
+              <h3 className="font-heading text-lg font-semibold text-rcs-charcoal">
                 {service.title}
               </h3>
 
               {/* SMALL GOLD DIVIDER */}
-              <div className="my-3 h-[2px] w-8 rounded-full bg-[#D9A44C]/80 transition-all duration-300 group-hover:w-14" />
+              <div aria-hidden="true" className="my-3 h-px w-8 bg-rcs-gold/80" />
 
               {/* DESCRIPTION */}
-              <p className="text-[14px] leading-6 text-[#0B0806]/65">
+              <p className="text-base leading-[1.8] text-rcs-muted">
                 {service.description}
               </p>
             </article>
