@@ -86,7 +86,7 @@ export default function Navbar() {
 
         {/* CONTACT BUTTON */}
         <Link
-          to="/contact"
+          to="/contact-us"
           className="hidden shrink-0 items-center justify-center gap-3 rounded-[5px] bg-[#D9A441] px-5 py-3.5 text-[13px] font-bold text-[#100E0B] transition-all duration-300 hover:bg-[#F2C567] hover:shadow-[0_5px_20px_rgba(217,164,65,0.25)] sm:inline-flex lg:px-6"
         >
           Contact
@@ -138,7 +138,7 @@ export default function Navbar() {
           ))}
 
           <Link
-            to="/contact"
+            to="/contact-us"
             onClick={() => setIsOpen(false)}
             className="mt-4 flex items-center justify-center gap-2 rounded-md bg-[#D9A441] px-5 py-3.5 text-sm font-bold text-[#100E0B]"
           >

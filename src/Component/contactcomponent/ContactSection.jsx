@@ -1,215 +1,122 @@
 import { useState } from "react";
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 
-const contactEmail = "rodney@absoluteteam.net";
-
-const fields = [
-  { name: "firstName", label: "First Name", autoComplete: "given-name", required: true },
-  { name: "lastName", label: "Last Name", autoComplete: "family-name", required: true },
-  { name: "email", label: "Email Address", type: "email", autoComplete: "email", required: true },
-  { name: "phone", label: "Phone Number", type: "tel", autoComplete: "tel", placeholder: "(555) 123-4567" },
-];
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  service: "Residential Roofing",
+  message: "",
+};
 
 const inputStyle =
-  "min-w-0 w-full rounded-md border border-rcs-charcoal/20 bg-rcs-surface/50 px-4 py-3 text-base text-rcs-charcoal transition-colors placeholder:text-rcs-muted/80 focus:border-rcs-gold-ink focus:outline-2 focus:outline-offset-2 focus:outline-rcs-gold-ink";
+  "w-full rounded-lg border border-white/10 bg-black/40 px-4 py-3 text-white placeholder:text-white/40 outline-none transition focus:border-rcs-gold focus:ring-2 focus:ring-rcs-gold/30";
 
-const ContactSection = () => {
-  const [emailRequested, setEmailRequested] = useState(false);
+export default function ContactSection() {
+  const [form, setForm] = useState(initialForm);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((current) => ({ ...current, [name]: value }));
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const value = (name) => String(data.get(name) || "").trim();
-    const subject = value("subject") || "Roofing enquiry - RCS Construction Services";
-    const body = [
-      "Hello RCS Construction Services,",
-      "",
-      value("message"),
-      "",
-      `Name: ${value("firstName")} ${value("lastName")}`,
-      `Email: ${value("email")}`,
-      `Phone: ${value("phone") || "Not provided"}`,
-    ].join("\r\n");
-
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setEmailRequested(true);
+    const message = [
+      "Hello RCS Construction Services!",
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      `Phone: ${form.phone}`,
+      `Service: ${form.service}`,
+      `Message: ${form.message}`,
+    ].join("\n");
+    window.open(
+      `https://wa.me/14694200340?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
   };
 
   return (
     <section
+      id="contact-form"
       aria-labelledby="contact-section-heading"
-      className="bg-rcs-surface py-16 font-sans text-rcs-charcoal md:py-24"
+      className="bg-[#0b0906] py-16 font-sans text-white md:py-24"
     >
-      <div className="mx-auto w-full max-w-[1280px] px-6 sm:px-10 lg:px-16">
-        <div className="grid items-start gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
-          <div id="contact-details" className="min-w-0 scroll-mt-[calc(var(--site-header-height)+24px)] lg:py-4">
-            <div className="mb-5 flex items-center gap-3">
-              <span aria-hidden="true" className="h-px w-8 bg-rcs-gold" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-rcs-gold-ink sm:text-xs">
-                Contact Our Team
-              </span>
-            </div>
-
-            <h2
-              id="contact-section-heading"
-              className="max-w-lg font-heading text-3xl font-bold leading-[1.15] tracking-[-0.03em] text-balance sm:text-4xl lg:text-[44px]"
-            >
-              Get in Touch With <span className="text-rcs-gold-ink">Our Team.</span>
-            </h2>
-
-            <p className="mt-6 max-w-lg text-base leading-[1.8] text-rcs-muted">
-              Have a roofing question or a project in mind? Connect with Rodney
-              The Roofer at RCS Construction Services for repairs, replacements,
-              and inspections for your home or business.
-            </p>
-
-            <dl className="mt-9 space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-rcs-gold/25 bg-rcs-gold/10 text-rcs-gold-ink">
-                  <Phone size={21} strokeWidth={1.8} aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-rcs-muted">Call Us</dt>
-                  <dd className="mt-1">
-                    <a
-                      href="tel:+14694200340"
-                      className="inline-flex min-h-8 items-center font-heading text-lg font-bold transition-colors hover:text-rcs-gold-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold-ink sm:text-xl"
-                    >
-                      (469) 420-0340
-                    </a>
-                  </dd>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-rcs-gold/25 bg-rcs-gold/10 text-rcs-gold-ink">
-                  <Mail size={21} strokeWidth={1.8} aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-rcs-muted">Email Us</dt>
-                  <dd className="mt-1">
-                    <a
-                      href={`mailto:${contactEmail}`}
-                      className="inline-flex min-h-8 items-center break-all text-base font-semibold transition-colors hover:text-rcs-gold-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold-ink"
-                    >
-                      {contactEmail}
-                    </a>
-                  </dd>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="flex size-12 shrink-0 items-center justify-center rounded-lg border border-rcs-gold/25 bg-rcs-gold/10 text-rcs-gold-ink">
-                  <MapPin size={21} strokeWidth={1.8} aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-rcs-muted">Service Area</dt>
-                  <dd className="mt-1 font-heading text-lg font-bold sm:text-xl">Serving Texas</dd>
-                  <dd className="mt-1 text-sm leading-relaxed text-rcs-muted">Residential &amp; commercial roofing</dd>
-                </div>
-              </div>
-            </dl>
-
-            <div className="mt-9 border-t border-rcs-charcoal/10 pt-6">
-              <p className="font-heading text-base font-bold">RCS Construction Services</p>
-              <p className="mt-1 text-sm text-rcs-muted">Powered by Absolute Construction</p>
-            </div>
+      <div className="mx-auto grid w-full max-w-[1280px] gap-10 px-6 sm:px-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:px-16">
+        <div className="min-w-0 lg:py-4">
+          <div className="mb-5 flex items-center gap-3">
+            <span aria-hidden="true" className="h-px w-8 bg-rcs-gold" />
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-rcs-gold">Get In Touch</span>
           </div>
+          <h2 id="contact-section-heading" className="max-w-lg font-heading text-3xl font-bold leading-tight tracking-[-0.03em] sm:text-4xl">
+            How Can We Help You Today?
+          </h2>
+          <p className="mt-5 max-w-lg leading-7 text-white/65">
+            Tell us about your roofing needs. Our team is ready to help you explore the right solution for your property.
+          </p>
 
-          <div id="contact-form" className="min-w-0 scroll-mt-[calc(var(--site-header-height)+24px)] rounded-2xl border border-rcs-gold/25 bg-white p-6 shadow-[0_12px_40px_rgba(16,14,11,0.04)] sm:p-8">
-            <h3 id="contact-form-heading" className="font-heading text-2xl font-bold leading-tight tracking-[-0.02em]">
-              Tell Us About Your Project
-            </h3>
-            <p id="contact-form-help" className="mt-3 text-sm leading-6 text-rcs-muted">
-              Complete the form to prepare an email to our team. Fields marked
-              with * are required.
-            </p>
-
-            <form
-              aria-labelledby="contact-form-heading"
-              aria-describedby="contact-form-help contact-email-help"
-              onSubmit={handleSubmit}
-              onChange={() => setEmailRequested(false)}
-              className="mt-7 space-y-5"
-            >
-              <div className="grid gap-5 sm:grid-cols-2">
-                {fields.map((field) => (
-                  <div key={field.name} className="min-w-0">
-                    <label htmlFor={`contact-${field.name}`} className="mb-2 block text-sm font-semibold">
-                      {field.label}{field.required ? " *" : " (optional)"}
-                    </label>
-                    <input
-                      id={`contact-${field.name}`}
-                      name={field.name}
-                      type={field.type || "text"}
-                      autoComplete={field.autoComplete}
-                      placeholder={field.placeholder}
-                      required={field.required}
-                      maxLength={field.name === "email" ? 254 : 100}
-                      className={inputStyle}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div>
-                <label htmlFor="contact-subject" className="mb-2 block text-sm font-semibold">Subject (optional)</label>
-                <input
-                  id="contact-subject"
-                  name="subject"
-                  type="text"
-                  placeholder="Roof inspection, repair, or replacement"
-                  maxLength={150}
-                  className={inputStyle}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="contact-message" className="mb-2 block text-sm font-semibold">Your Message *</label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  placeholder="Tell us about your roofing needs and where your property is located."
-                  rows={5}
-                  required
-                  maxLength={2000}
-                  className={`${inputStyle} min-h-36 resize-y`}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-[3px] border border-rcs-gold bg-rcs-gold px-6 py-4 text-sm font-semibold text-rcs-charcoal transition-colors hover:border-rcs-gold-hover hover:bg-rcs-gold-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold-ink sm:w-auto sm:px-8"
-              >
-                Continue to Email
-                <ArrowRight size={19} strokeWidth={1.8} aria-hidden="true" className="shrink-0 transition-transform group-hover:translate-x-1 motion-reduce:transform-none" />
-              </button>
-
-              <p id="contact-email-help" className="text-sm leading-6 text-rcs-muted">
-                Opens your email app with your details filled in. Review your
-                message there before sending.
-              </p>
-              <p role="status" className="text-sm leading-6 text-rcs-gold-ink empty:hidden">
-                {emailRequested && "Finish sending in your email app. If it didn't open, use the email address or phone number listed here to contact us."}
-              </p>
-            </form>
-
-            <div className="mt-8 overflow-hidden rounded-xl border border-rcs-gold/25 bg-rcs-surface">
-              <img
-                src="/images/contact-map.webp"
-                alt="Location map near North Central Expressway and 18th Street in Plano, Texas"
-                width={768}
-                height={290}
-                loading="lazy"
-                decoding="async"
-                className="block h-auto w-full"
-              />
+          <dl className="mt-9 space-y-6">
+            <div className="flex items-center gap-4">
+              <span className="rounded-lg bg-rcs-gold/10 p-4 text-rcs-gold"><Phone size={22} aria-hidden="true" /></span>
+              <div><dt className="font-semibold">Call Us</dt><dd className="mt-1"><a className="text-white/65 hover:text-rcs-gold" href="tel:+14694200340">(469) 420-0340</a></dd></div>
             </div>
+            <div className="flex items-center gap-4">
+              <span className="rounded-lg bg-rcs-gold/10 p-4 text-rcs-gold"><Mail size={22} aria-hidden="true" /></span>
+              <div><dt className="font-semibold">Email Us</dt><dd className="mt-1"><a className="break-all text-white/65 hover:text-rcs-gold" href="mailto:rodney@absoluteteam.net">rodney@absoluteteam.net</a></dd></div>
+            </div>
+            <div className="flex items-center gap-4">
+              <span className="rounded-lg bg-rcs-gold/10 p-4 text-rcs-gold"><MapPin size={22} aria-hidden="true" /></span>
+              <div><dt className="font-semibold">RCS Construction Services</dt><dd className="mt-1 text-white/65">Residential &amp; Commercial Roofing</dd></div>
+            </div>
+          </dl>
+
+          <div className="mt-9 flex items-center gap-3 border-t border-white/10 pt-6 text-sm text-white/65">
+            <ShieldCheck className="text-rcs-gold" size={22} aria-hidden="true" />
+            Quality workmanship. Dependable service.
           </div>
         </div>
+
+        <form onSubmit={handleSubmit} className="min-w-0 rounded-2xl border border-rcs-gold/20 bg-[#15120d] p-6 sm:p-8">
+          <h3 className="font-heading text-2xl font-bold">Request a Free Inspection</h3>
+          <p className="mb-7 mt-2 text-sm text-white/60">Complete the form and send your request directly to our team.</p>
+
+          <div className="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label htmlFor="contact-name" className="mb-2 block text-sm text-white/80">Full Name *</label>
+              <input id="contact-name" name="name" autoComplete="name" value={form.name} onChange={handleChange} required maxLength={120} placeholder="Your full name" className={inputStyle} />
+            </div>
+            <div>
+              <label htmlFor="contact-email" className="mb-2 block text-sm text-white/80">Email Address *</label>
+              <input id="contact-email" type="email" name="email" autoComplete="email" value={form.email} onChange={handleChange} required maxLength={254} placeholder="you@example.com" className={inputStyle} />
+            </div>
+            <div>
+              <label htmlFor="contact-phone" className="mb-2 block text-sm text-white/80">Phone Number *</label>
+              <input id="contact-phone" type="tel" name="phone" autoComplete="tel" value={form.phone} onChange={handleChange} required maxLength={40} placeholder="Your phone number" className={inputStyle} />
+            </div>
+            <div>
+              <label htmlFor="contact-service" className="mb-2 block text-sm text-white/80">Roofing Service *</label>
+              <select id="contact-service" name="service" value={form.service} onChange={handleChange} className={`${inputStyle} bg-[#0b0906]`}>
+                <option>Residential Roofing</option>
+                <option>Commercial Roofing</option>
+                <option>Roof Repair</option>
+                <option>Roof Replacement</option>
+                <option>Free Roof Inspection</option>
+              </select>
+            </div>
+            <div className="sm:col-span-2">
+              <label htmlFor="contact-message" className="mb-2 block text-sm text-white/80">Tell Us About Your Project *</label>
+              <textarea id="contact-message" name="message" value={form.message} onChange={handleChange} required maxLength={2000} rows={5} placeholder="Describe your roofing needs..." className={`${inputStyle} resize-y`} />
+            </div>
+          </div>
+
+          <button type="submit" className="group mt-6 flex min-h-12 w-full items-center justify-center gap-3 rounded-md bg-rcs-gold px-6 py-4 font-bold text-rcs-charcoal transition hover:bg-rcs-gold-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rcs-gold">
+            Send Request via WhatsApp
+            <ArrowRight size={20} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
+          </button>
+          <p className="mt-4 text-center text-xs text-white/45">Your request opens in WhatsApp for you to review and send.</p>
+        </form>
       </div>
     </section>
   );
-};
-
-export default ContactSection;
+}
